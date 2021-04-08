@@ -16,14 +16,24 @@ const routes = [
     hidden: true
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('@/views/Dashboard/index.vue')
+  },
+  {
+    path: '/employees',
+    name: 'EmployeeList',
+    component: () => import('@/views/EmployeeList/index.vue')
+  },
+  {
+    path: '/covid-panel',
+    name: 'CovidPanel',
+    component: () => import('@/views/CovidPanel/index.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login')
+    component: () => import('@/views/Login')
   },
   { path: '*', redirect: '/404', hidden: true }
 ]

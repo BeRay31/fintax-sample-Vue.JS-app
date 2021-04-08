@@ -1,0 +1,65 @@
+$purple: #7250ec;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+
+    li:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .buffer {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  &__item {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background: $purple;
+      color: white;
+    }
+  }
+
+  .arrow {
+    cursor: pointer;
+
+    img {
+      width: 0.75rem;
+    }
+
+    &--left {
+      img {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
