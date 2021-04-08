@@ -11,7 +11,6 @@ router.beforeEach(async(to, from, next) => {
   const whiteList = ['Login']
   if(!!hasToken || whiteList.includes(to.name)) {
     next();
-    console.log("MASUK SINI")
   } else {
     next({name: 'Login'})
   }

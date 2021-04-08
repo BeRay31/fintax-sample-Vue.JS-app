@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/404',
+    component: () => import('@/views/error-page/404'),
+    hidden: true
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
@@ -19,7 +24,8 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login')
-  }
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 const router = new VueRouter({
