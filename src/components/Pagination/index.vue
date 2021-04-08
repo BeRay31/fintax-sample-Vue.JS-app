@@ -21,6 +21,7 @@
 </template>
 
 <script>
+// TODO:: Event Handling implemented here as childern who emit event
 export default {
   name: 'Pagination',
   props: {

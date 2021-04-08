@@ -19,9 +19,6 @@
         <router-link to="/employees" tag="div" class="link">
           List Employee
         </router-link>
-        <router-link to="/covid-panel" tag="div" class="link">
-          COVID 19 Panel
-        </router-link>
       </div>
     </div>
     <div class="hidden-nav"></div>

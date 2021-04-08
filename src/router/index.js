@@ -1,15 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/404',
     component: () => import('@/views/error-page/404'),
@@ -24,11 +18,6 @@ const routes = [
     path: '/employees',
     name: 'EmployeeList',
     component: () => import('@/views/EmployeeList/index.vue')
-  },
-  {
-    path: '/covid-panel',
-    name: 'CovidPanel',
-    component: () => import('@/views/CovidPanel/index.vue')
   },
   {
     path: '/login',
