@@ -16,7 +16,7 @@
         <MDInput type="password" v-model="formData.password" required>Password</MDInput>
       </div>
       <div class="btn-group">
-        <button :class="['btn', isFormValid ? 'btn-primary' : 'btn-primary--alt']">Log-In</button>
+        <button :class="['btn', isFormValid ? 'btn-primary' : 'btn-primary--alt']" @click="login">Log-In</button>
       </div>
     </div>
 
@@ -28,9 +28,10 @@
 // parent child comm, 
 // Create Nested Component
 // Test API using https://reqres.in/
-// Use browser storage (cookie/ local/ session)
+// Use browser storage (cookie/ local/ session) -> save token
 import MDInput from '@/components/MDinput';
 
+import Authorization from '@/api/auth.js';
 export default {
   name: 'Login',
   components: {
@@ -40,7 +41,8 @@ export default {
     return {
       formData: {
         email: '',
-        password: ''
+        password: '',
+        fetchLoading: false
       }
     }
   },
@@ -57,8 +59,18 @@ export default {
     isPasswordValid(password) {
       return password.length > 5
     },
-    login() {
-
+    async login() {
+      if(!this.fetchLoading && this.isFormValid) {
+        this.fetchLoading = true;
+        try {
+          const resp = await Authorization.loginSuccess(this.formData);
+          console.log(resp)
+          localStorage.setItem('fintax-token', resp.data.token)
+        } catch(e) {
+          alert(e);
+        }
+        this.fetchLoading = false;
+      }
     }
   },
 }
