@@ -3,7 +3,7 @@
     <div class="card">
       <header>
         <h2>List of Employees</h2>
-        <MDInput type="number" v-model="showedLength" :min="1" :max="12">Row Count</MDInput>
+        <MDInput type="number" v-model="showedLength" min="1" max="12">Row Count</MDInput>
       </header>
       <table>
         <tr>
@@ -151,14 +151,21 @@ export default {
         return null;
       }
     },
+    sortedCollections() {
+      if(!!this.sortType) {
+        return this.collections.sort(this.sortFunct(this.sortType));
+      } else {
+        return this.collections;
+      }
+    },
     showedCollections() {
-      if (this.collections && this.collections.length > 0 && this.page) {
+      if (this.sortedCollections && this.sortedCollections.length > 0 && this.page) {
         let firstIndex = (this.page - 1) * this.showedLength;
         let lastIndex = firstIndex + this.showedLength;
-        if (lastIndex > this.collections.length) {
-          lastIndex = this.collections.length
+        if (lastIndex > this.sortedCollections.length) {
+          lastIndex = this.sortedCollections.length
         }
-        return this.collections.slice(firstIndex, lastIndex);
+        return this.sortedCollections.slice(firstIndex, lastIndex);
       }
     }
   },
@@ -179,6 +186,24 @@ export default {
       } else {
         this.sortType = sortType;
       }
+    },
+    sortFunct(sortType) {
+      const [atr, orientation] = sortType.split(" ");
+      let compareFunction;
+      if(atr == "id") {
+        if(orientation == "desc") {
+          compareFunction = (a, b) => (b[atr] - a[atr]);
+        } else {
+          compareFunction = (a, b) => (a[atr] - b[atr]);
+        }
+      } else {
+        if(orientation == "desc") {
+          compareFunction = (a, b) => ((b[`${atr}`] + '').localeCompare(a[`${atr}`]));
+        } else {
+          compareFunction = (a, b) => ((a[`${atr}`] + '').localeCompare(b[`${atr}`]));
+        }
+      }
+      return compareFunction;
     }
   }
 }
