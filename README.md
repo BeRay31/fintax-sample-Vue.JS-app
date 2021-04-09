@@ -252,3 +252,6 @@ This page accomplised:
 * **GOAL 2 : Do routing using path variable, query**
 the template routes are `/employees/:id?best=true`
 so its has both variable and query
+
+### Thats it, All Done, Hope u Enjoy :)
+### Feel free to reach me if you have something in your mind
