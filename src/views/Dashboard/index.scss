@@ -1,4 +1,5 @@
 @import '@/style/breakpoints.scss';
+
 .dashboard {
   padding: 1rem;
   display: flex;
@@ -51,14 +52,19 @@
     
     .employees-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(13rem, max-content));
+      grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
       gap: 1rem;
       .card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        cursor: default;
+        cursor: pointer;
         gap: 2rem;
+        transition: 0.1s all;
+
+        &:hover {
+          transform: translateY(-15px);
+        }
 
         .avatar-container {
           width: 100%;

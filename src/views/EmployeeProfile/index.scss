@@ -1,0 +1,61 @@
+@import '@/style/breakpoints.scss';
+
+.employee-profile {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .profile {
+    width: 80%;
+    
+    &-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      gap: 5rem;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .avatar-container {
+        img {
+          height: 100%;
+          width: 100%;
+        }
+
+        &.best {
+          box-shadow: 0 0 2px #7250ec, 0 0 2px #7250ec, 0 0 10px #7250ec;
+        }
+      }
+
+      .name {
+        font-weight: bold;
+      }
+    }
+
+    &__right {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      gap: 1rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      
+      .btn {
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.25rem 2rem;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@
     <div class="employee-of-the-month card">
       <h2>Employee Of The Month</h2>
       <div class="employees-layout">
-        <div class="card" v-for="(en, index) in bestEmployee" :key="en.id">
+        <div class="card" v-for="(en, index) in bestEmployee" :key="en.id" @click="redirectToProfile(en.id)">
           <div class="avatar-container">
             <div class="rank-container">
               {{ index + 1 }}
@@ -65,6 +65,9 @@ export default {
     },
     redirectToEmployeeList() {
       this.$router.push({ name: 'EmployeeList' })
+    },
+    redirectToProfile(id) {
+      this.$router.push({ name: 'EmployeeProfile', params: { id }, query: { best: true } })
     }
   }
 }

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/dashboard', hidden: true },
   {
     path: '/404',
     component: () => import('@/views/error-page/404'),
@@ -18,6 +19,11 @@ const routes = [
     path: '/employees',
     name: 'EmployeeList',
     component: () => import('@/views/EmployeeList/index.vue')
+  },
+  {
+    path: '/employees/:id',
+    name: 'EmployeeProfile',
+    component: () => import('@/views/EmployeeProfile/index.vue')
   },
   {
     path: '/login',

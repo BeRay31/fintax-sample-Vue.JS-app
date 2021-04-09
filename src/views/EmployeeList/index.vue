@@ -60,7 +60,7 @@
               <div
                 class="name"
                 @click="setSort(sortType === 'first_name asc' ? 'first_name desc' : 'first_name asc')"
-              >Nama Depan</div>
+              >First Name</div>
               <div class="sorting-indicator">
                 <svg
                   viewBox="0 0 100 50"
@@ -84,7 +84,7 @@
               <div
                 class="name"
                 @click="setSort(sortType === 'last_name asc' ? 'last_name desc' : 'last_name asc')"
-              >Nama Belakang</div>
+              >Last Name</div>
               <div class="sorting-indicator">
                 <svg
                   viewBox="0 0 100 50"
@@ -105,7 +105,7 @@
           </th>
           <th>Profil</th>
         </tr>
-        <tr v-for="en in showedCollections" :key="en.id">
+        <tr v-for="en in showedCollections" :key="en.id" @click="redirectToProfile(en.id)">
           <td>{{ en.id }}</td>
           <td>{{ en.email }}</td>
           <td>{{ en.first_name }}</td>
@@ -204,6 +204,9 @@ export default {
         }
       }
       return compareFunction;
+    },
+    redirectToProfile(id) {
+      this.$router.push({ name: 'EmployeeProfile', params: { id } })
     }
   }
 }

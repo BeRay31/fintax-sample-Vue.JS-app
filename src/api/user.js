@@ -7,4 +7,9 @@ export default class User {
     const resp = await service.get(`${this.baseGroupURL}/users?per_page=12`);
     return resp;
   }
+
+  static async getById(id) {
+    const resp = await service.get(`${this.baseGroupURL}/users/${id}`);
+    return resp;
+  }
 }
