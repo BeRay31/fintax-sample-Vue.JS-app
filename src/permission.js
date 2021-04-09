@@ -9,7 +9,7 @@ router.beforeEach(async(to, from, next) => {
   const hasToken = getToken();
   const whiteList = ['Login']
   if(!!hasToken || whiteList.includes(to.name)) {
-    if(whiteList.includes(to.name)) {
+    if(whiteList.includes(to.name) && !!hasToken) {
       next({name: 'Dashboard'})
     }
     next();
