@@ -66,6 +66,7 @@ export default {
           const resp = await Authorization.loginSuccess(this.formData);
           console.log(resp)
           localStorage.setItem('fintax-token', resp.data.token)
+          this.$router.push({ name: 'Dashboard' })
         } catch(e) {
           alert(e);
         }
